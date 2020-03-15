@@ -1,0 +1,27 @@
+1. Zaimplementuj samodzielnie funkcje wyższego rzędu map/2 oraz filter/2.
+
+> Map_function = fun(Q, List) -> [Q(X) || X <- List] end.
+> Filter_function = fun (Q, List) -> [X || X<-List, Q(X) == true] end.
+
+Przetestuj powyższe funkcje:
+Wykorzystam funkcje podane na wykładzie:
+
+> Dup = fun (X) -> X*2 end.
+> Map_function(Dup, [1,2,3,4]).
+[2,4,6,8]
+
+> IsGood = fun (good) -> true; (_) -> false end.
+> Filter_function(IsGood, [good, bad, better, good]).
+[good,good]
+
+2. Stwórz funkcję, która policzy sumę cyfr w liczbie. Użyj do tego lists:foldl/3.
+
+W pliku qsort.erl została zaimplementowana pomocnicza funkcja digitize/1 zamieniająca liczbę na listę.
+
+> Count = fun(X,Y) -> X+Y end.
+> SumDigits = fun(N) -> lists:foldl(Count, 0 , qsort:digitize(N)) end.
+
+3.Przy pomocy funkcji lists:filter/2 wybierz z listy miliona losowych liczb takie, w których suma cyfr jest podzielna przez 3.
+
+> Mod3 = fun(X) -> SumDigits(X) rem 3 == 0 end.
+> lists:filter(Mod13, qsort:randomElems(1000000,1,1000000)).
