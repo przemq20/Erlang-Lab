@@ -1,0 +1,116 @@
+
+createMonitor/0, addStation/3, addValue/5,
+
+	Funkcje odpowiadają za tworzenie nowego monitora, dodanie stacji do monitora i dodanie pomiarów do stacji.
+
+	Wywołuję funkcję test, tworzącą nowy monitor wraz z trzema stacjami i pomiarami.
+
+	P = pollution:test().
+
+	Otrzymujemy:
+
+	#{{station,"Druga",{1,30}} =>
+		  [{measurement,{{2020,4,4},{21,1,41}},"PM2.5",20},
+		   {measurement,{{2020,4,4},{21,1,41}},"PM10",500}],
+	  {station,"Pierwsza",{10,20}} =>
+		  [{measurement,{{2020,4,4},{20,20,20}},"PM2.5",3},
+		   {measurement,{{2020,4,4},{21,1,41}},"PM2.5",1},
+		   {measurement,{{2020,4,4},{21,1,41}},"PM10",10}],
+	  {station,"Trzecia",{45,90}} =>
+		  [{measurement,{{2020,4,4},{21,1,41}},"PM2.5",30},
+		   {measurement,{{2020,4,4},{21,1,41}},"PM10",100}]}
+		   
+	Zatem wszystkie stacje i pomiary zostały dodane do monitora.
+
+	Spróbujmy dodać stację:
+		o istniejącej już nazwie:
+
+			P1 = pollution:addStation("Pierwsza", {101,123}, P).
+
+			Otrzymujemy: 
+			** exception throw: "Station with the given name already exists"
+		
+		o istniejącej lokalizacji:
+			P1 = pollution:addStation("Nazwa",{10,20},P).
+			
+			Otrzymujemy:
+			** exception throw: "Station with the given coordinates already exists"
+		
+RemoveValue/4
+	
+	Funkcja odpowiada za usunięcie pomiaru ze stacji.		
+
+	Usuńmy pomiar z stacji "Pierwsza": 
+		P1 = pollution:removeValue("Pierwsza", {{2020,4,4},{20,20,20}},"PM2.5", P).
+		
+	Otrzymujemy:
+
+	#{{station,"Druga",{1,30}} =>
+		  [{measurement,{{2020,4,4},{21,9,24}},"PM2.5",20},
+		   {measurement,{{2020,4,4},{21,9,24}},"PM10",500}],
+	  {station,"Pierwsza",{10,20}} =>
+		  [{measurement,{{2020,4,4},{21,9,24}},"PM2.5",1},
+		   {measurement,{{2020,4,4},{21,9,24}},"PM10",10}],
+	  {station,"Trzecia",{45,90}} =>
+		  [{measurement,{{2020,4,4},{21,9,24}},"PM2.5",30},
+		   {measurement,{{2020,4,4},{21,9,24}},"PM10",100}]}
+
+	Widzimy, że wartość została usunięta.
+	
+getOneValue/4
+
+	Funkcja odpowiada za podanie wartości pomiaru danego nazwą stacji, w której się znajduje, datą i typem 
+	
+	P2 = pollution:getOneValue("Druga",{{2020,4,4},{21,9,24}},"PM2.5", P1).
+	
+	Otrzymujemy wynik 20, co jest zgodne z oczekiwaniami.
+	
+getStationMean/3
+	
+	Funkcja odpowiada za podanie średniej wartości pomiarów danego typu ze stacji.
+
+	Dodajmy do stacji "Pierwsza" więcej pomiarów:
+	
+	P3 = pollution:addValue("Pierwsza", calendar:local_time(), "PM2.5", 100, P1).
+	P4 = pollution:addValue("Pierwsza", calendar:local_time(), "PM10", 111, P3).
+	
+	Otrzymujemy dla stacji "Pierwsza":
+	
+  {station,"Pierwsza",{10,20}} =>
+      [{measurement,{{2020,4,4},{21,45,36}},"PM10",111},
+       {measurement,{{2020,4,4},{21,44,51}},"PM2.5",100},
+       {measurement,{{2020,4,4},{20,20,20}},"PM2.5",3},
+       {measurement,{{2020,4,4},{21,9,24}},"PM2.5",1},
+       {measurement,{{2020,4,4},{21,9,24}},"PM10",10}],
+	   
+	Zbadajmy dla niej średnią PM2.5:
+	P5 = pollution:getStationMean("Pierwsza", "PM2.5", P4).
+	
+	Otrzymujemy wynik 34.666666666666664, co jest zgodne z oczekiwaniami.
+
+getDailyMean/3
+
+	Funkcja odpowiada za podanie średniej wartości pomiarów danego typu w jednym dniu
+	
+	Zbadajmy dla dnia 04.04.2020 średnią PM10:
+	P6 = pollution:getDailyMean({2020,4,4},"PM10", P4).
+	Otrzymujemy wynik 180.25, co jest zgodne z oczekiwaniami
+	
+getStationMinMaxValue/3,
+
+	Funkcja odpowiada za podanie minimalnej i maksymalnej pomiarów danego typu ze stacji.
+
+	Zbadajmy maksymalną i minimalną wartość pomiarów PM2.5 dla stacji "Pierwsza":
+	P7 = pollution:getStationMinMaxValue("Pierwsza", "PM2.5", P4).
+
+	Zwracana jest krotka {1,100}, co jest zgodne z oczekiwaniami.
+
+getDailyMinMaxValue/3,
+
+	Funkcja odpowiada za podanie minimalnej i maksymalnej wartości pomiarów danego typu w danym dniu.
+
+	Zbadajmy maksymalną i minimalną wartość pomiarów PM10 w dniu 4.4.2020:
+	P8 = pollution:getDailyMinMaxValue({2020,4,4}, "PM10", P4).
+	
+	Zwracana jest krotka {10,111}, co jest zgodne z oczekiwaniami.
+

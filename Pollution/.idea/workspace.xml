@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4f818720-576c-4a7b-9c23-3bbac91868cc" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="CLEAR_OUTPUT_DIRECTORY" value="false" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Erlang Module" />
+        <option value="Erlang Header" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ZA4a8T67jflOUIsfhLvRGri5mq" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lab3" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="ErlangConsoleRunConfigurationType" factoryName="Erlang Console" nameIsGenerated="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <module name="Pollution" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="consoleArgs" value="" />
+      <option name="workingDirPath" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="MakeProject" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4f818720-576c-4a7b-9c23-3bbac91868cc" name="Default Changelist" comment="" />
+      <created>1584268624569</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584268624569</updated>
+      <workItem from="1584268628076" duration="1030000" />
+      <workItem from="1585935401576" duration="28660000" />
+      <workItem from="1586020304290" duration="9496000" />
+      <workItem from="1586081617777" duration="5362000" />
+      <workItem from="1586096260384" duration="18000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>
